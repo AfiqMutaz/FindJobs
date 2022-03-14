@@ -137,7 +137,7 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void unused) {
                         Log.d(TAG, "DocumentSnapshot added with ID: " + userId);
-                        Intent intent = new Intent(RegisterActivity.this, RegisterLocationActivity.class);
+                        Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
                         startActivity(intent);
                         finish();
                     }

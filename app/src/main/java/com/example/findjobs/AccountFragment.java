@@ -30,12 +30,12 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 public class AccountFragment extends Fragment {
 
-    Button logoutBtn;
-    ImageView profilePictureImg;
-    TextView userName;
+    private Button logoutBtn;
+    private ImageView profilePictureImg;
+    private TextView userName, tvEditProfile;
 
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-    FirebaseAuth fAuth = FirebaseAuth.getInstance();
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private FirebaseAuth fAuth = FirebaseAuth.getInstance();
 
     public static final String TAG = "TAG";
 

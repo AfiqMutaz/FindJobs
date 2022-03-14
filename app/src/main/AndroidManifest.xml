@@ -14,15 +14,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FindJobs">
+        <activity
+            android:name=".EditProfileActivity"
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version"/>
-
-        <!-- API KEY FOR GOOGLE MAPS API -->
+            android:value="@integer/google_play_services_version" /> <!-- API KEY FOR GOOGLE MAPS API -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key"/>
+            android:value="@string/google_maps_key" />
 
         <activity
             android:name=".RegisterLocationActivity"

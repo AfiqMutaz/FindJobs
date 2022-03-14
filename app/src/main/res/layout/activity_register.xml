@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:hint="Phone"
-        android:editable="false"/>
+        android:clickable="false"/>
 
     <Button
         android:id="@+id/idBtnSubmit"

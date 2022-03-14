@@ -78,4 +78,9 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
+    public void openEditProfileActivity(View view) {
+        Intent intent = new Intent(this, EditProfileActivity.class);
+        startActivity(intent);
+    }
 }

@@ -54,6 +54,8 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         bottomNavigationView.setSelectedItemId(R.id.home);
+
+        checkUserRegistered();
     }
 
     @Override
@@ -161,4 +163,32 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
 //        });
 //        return userDetails;
 //    }
+
+    public void openChangeAccountType(View view) {
+        Intent intent = new Intent(this, UserTypeActivity.class);
+        startActivity(intent);
+    }
+
+    public void checkUserRegistered() {
+        String userId = fAuth.getCurrentUser().getUid();
+
+        DocumentReference docRef = db.collection("users").document(userId);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if(document.exists()) {
+                        Log.d(TAG, "User has registered");
+                    } else {
+                        Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                } else {
+                    Log.d(TAG, "Get failed with", task.getException());
+                }
+            }
+        });
+    }
 }

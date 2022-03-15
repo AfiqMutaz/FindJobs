@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:hint="Phone"
-        android:clickable="false"/>
+        android:inputType="none"/>
 
     <Button
         android:id="@+id/idBtnSubmit"

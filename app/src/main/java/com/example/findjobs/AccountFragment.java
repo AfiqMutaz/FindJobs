@@ -30,14 +30,13 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 public class AccountFragment extends Fragment {
 
-    private Button logoutBtn;
     private ImageView profilePictureImg;
     private TextView userName, tvEditProfile;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseAuth fAuth = FirebaseAuth.getInstance();
 
-    public static final String TAG = "TAG";
+    public static final String TAG = AccountFragment.class.getSimpleName();
 
     public AccountFragment() {
         // Required empty public constructor
@@ -55,20 +54,11 @@ public class AccountFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         profilePictureImg = getView().findViewById(R.id.idImgProfilePicture);
-        logoutBtn = getView().findViewById(R.id.idBtnSignOut);
 
         profilePictureImg.setImageResource(R.drawable.ic_person_background);
         userName = getView().findViewById(R.id.idTvName);
 
         getUserName();
-
-        logoutBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-            }
-        });
-
     }
 
     public void getUserName() {

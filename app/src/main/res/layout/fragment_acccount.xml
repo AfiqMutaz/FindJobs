@@ -62,13 +62,15 @@
             android:layout_marginTop="10dp"/>
 
         <TextView
+            android:id="@+id/idTvChangeAccType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Change account type"
             android:layout_marginTop="10dp"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
-            android:background="@drawable/textview_border_background"/>
+            android:background="@drawable/textview_border_background"
+            android:onClick="openChangeAccountType"/>
 
     </LinearLayout>
 

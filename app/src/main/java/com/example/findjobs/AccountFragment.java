@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,12 +32,14 @@ import com.google.firebase.firestore.QuerySnapshot;
 public class AccountFragment extends Fragment {
 
     private ImageView profilePictureImg;
-    private TextView userName, tvEditProfile;
+    private TextView userName, tvChangeUserType;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseAuth fAuth = FirebaseAuth.getInstance();
 
     public static final String TAG = AccountFragment.class.getSimpleName();
+
+    private boolean userType;
 
     public AccountFragment() {
         // Required empty public constructor
@@ -54,11 +57,21 @@ public class AccountFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         profilePictureImg = getView().findViewById(R.id.idImgProfilePicture);
-
         profilePictureImg.setImageResource(R.drawable.ic_person_background);
+
+        tvChangeUserType = getView().findViewById(R.id.idTvChangeAccType);
+
         userName = getView().findViewById(R.id.idTvName);
 
         getUserName();
+
+        if(getUserType()) {
+            //Set Save State
+            tvChangeUserType.setText("You are now a service provider");
+            tvChangeUserType.setOnClickListener(null);
+        }
+
+
     }
 
     public void getUserName() {
@@ -103,5 +116,27 @@ public class AccountFragment extends Fragment {
 //                }
 //            }
 //        });
+    }
+
+    public boolean getUserType() {
+        String userId = fAuth.getCurrentUser().getUid();
+
+        DocumentReference docRef = db.collection("users").document(userId);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if(document.exists()) {
+                        userType = document.getBoolean("isProvider");
+                    } else {
+                        Log.d(TAG, "No such document");
+                    }
+                } else {
+                    Log.d(TAG, "Get failed with", task.getException());
+                }
+            }
+        });
+        return userType;
     }
 }

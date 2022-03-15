@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -51,6 +52,8 @@ public class RegisterActivity extends AppCompatActivity {
         edtLastName = findViewById(R.id.idEdtLastName);
         edtEmail = findViewById(R.id.idEdtEmail);
         edtPhone = findViewById(R.id.idEdtPhone);
+
+        edtPhone.setInputType(InputType.TYPE_NULL);
 
         userId = fAuth.getCurrentUser().getUid();
         user = fAuth.getCurrentUser();
@@ -130,6 +133,7 @@ public class RegisterActivity extends AppCompatActivity {
         user.put("last", lastName);
         user.put("email", email);
         user.put("phone", phone);
+        user.put("isProvider", false);
 
         db.collection("users").document(userId)
                 .set(user)
@@ -137,7 +141,7 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void unused) {
                         Log.d(TAG, "DocumentSnapshot added with ID: " + userId);
-                        Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
+                        Intent intent = new Intent(RegisterActivity.this, RegisterLocationActivity.class);
                         startActivity(intent);
                         finish();
                     }

@@ -87,8 +87,11 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
         return false;
     }
 
-    public void openActivity(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+    public void openJobOrder(View view) {
+        int id = view.getId();
+        Log.d(TAG, String.valueOf(id));
+        Intent intent = new Intent(this, OrderActivity.class);
+        intent.putExtra("viewId", id);
         startActivity(intent);
     }
 

@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FindJobs">
         <activity
+            android:name=".OrderActivity"
+            android:exported="false" />
+        <activity
             android:name=".UserTypeActivity"
             android:exported="false" />
         <activity

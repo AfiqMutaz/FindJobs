@@ -11,9 +11,11 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/idLayoutElectrician"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:onClick="openJobOrder"
             android:background="@drawable/textview_border_background">
 
             <TextView
@@ -28,10 +30,12 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/idLayoutCleaning"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="10dp"
+            android:onClick="openJobOrder"
             android:background="@drawable/textview_border_background">
 
             <TextView
@@ -46,10 +50,11 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/idLayoutPlumbing"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:onClick="openActivity"
+            android:onClick="openJobOrder"
             android:layout_marginTop="10dp"
             android:background="@drawable/textview_border_background">
 

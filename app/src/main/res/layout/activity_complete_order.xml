@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CompleteOrderActivity"
+    android:layout_margin="20dp">
+
+    <TextView
+        android:id="@+id/idTvSummaryTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Order Summary"
+        android:textSize="24dp"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:id="@+id/idLinLayServiceType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idTvSummaryTitle"
+        android:layout_marginTop="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Service Type: "
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/idTvService"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Test"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/idLinLayDateTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idLinLayServiceType">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Booking Date: "
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/idTvBookingDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Test"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/idLinLayDateTimeAlt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idLinLayDateTime">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alternate Booking Date: "
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/idTvBookingDateAlt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Test"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/idLinLaySupplies"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idLinLayDateTimeAlt">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cleaning Supplies: "
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/idLinLayNumCleaner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idLinLaySupplies">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Additional Cleaners: "
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/idLinLayDuration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idLinLayNumCleaner">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Duration: "
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <TableLayout
+        android:id="@+id/idTabLayPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_margin="40dp"
+        android:layout_below="@id/idLinLayDuration">
+
+        <TableRow
+            android:background="@color/quantum_googgreen900">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:text="Description"
+                android:textColor="@color/white"
+                android:padding="10sp"
+                android:textSize="14sp"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/white"
+                android:text="Selection"
+                android:padding="10sp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/white"
+                android:text="Price"
+                android:padding="10sp"/>
+        </TableRow>
+
+        <TableRow
+            android:background="@color/quantum_grey100">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:text="Base Price"
+                android:padding="10sp"
+                android:textSize="14sp"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_gravity="center_horizontal"
+                android:text=""
+                android:padding="10sp"/>
+
+            <TextView
+                android:id="@+id/idTvBasePrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_gravity="center_horizontal"
+                android:text="Price"
+                android:padding="10sp"/>
+
+        </TableRow>
+
+        <TableRow
+            android:background="@color/quantum_grey100">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:text="Cleaning Supplies"
+                android:padding="10sp"
+                android:textSize="14sp"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:id="@+id/idTvSupplies"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_gravity="center_horizontal"
+                android:padding="10sp"/>
+
+            <TextView
+                android:id="@+id/idTvSuppliesPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_gravity="center_horizontal"
+                android:text="Price"
+                android:padding="10sp"/>
+
+        </TableRow>
+
+        <TableRow
+            android:background="@color/quantum_grey100">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:text="Additional Cleaners"
+                android:padding="10sp"
+                android:textSize="14sp"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:id="@+id/idTvAddCleaners"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_gravity="center_horizontal"
+                android:padding="10sp"/>
+
+            <TextView
+                android:id="@+id/idTvAddCleanersPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_gravity="center_horizontal"
+                android:text="Price"
+                android:padding="10sp"/>
+
+        </TableRow>
+
+        <TableRow
+            android:background="@color/quantum_grey100">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:text="Duration"
+                android:padding="10sp"
+                android:textSize="14sp"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:id="@+id/idTvDuration"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_gravity="center_horizontal"
+                android:padding="10sp"/>
+
+            <TextView
+                android:id="@+id/idTvDurationPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_gravity="center_horizontal"
+                android:text="Price"
+                android:padding="10sp"/>
+
+        </TableRow>
+    </TableLayout>
+
+    <LinearLayout
+        android:id="@+id/idLinLayTotalPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/idTabLayPrice">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Price: "/>
+
+        <TextView
+            android:id="@+id/idTvTotalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/idBtnConfirmPay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/confirm_pay"
+        android:layout_below="@id/idLinLayTotalPrice"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="15sp"/>
+
+</RelativeLayout>

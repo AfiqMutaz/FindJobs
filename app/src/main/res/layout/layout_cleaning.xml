@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20dp">
+
+    <TextView
+        android:id="@+id/idTvCleaningTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cleaning"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/idTvCleaningSupplies"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idTvCleaningTitle"
+        android:layout_marginTop="15dp"
+        android:text="Do you have cleaning supplies and equipment such as broom, mop, soap and etc. If you would like us to use and provide you with our own please specify. A charge of $5 will be included."
+        android:textSize="16sp" />
+
+    <Spinner
+        android:id="@+id/idSpinCleanSupplies"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idTvCleaningSupplies"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"/>
+
+    <TextView
+        android:id="@+id/idTvCleaners"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Would you like additional cleaners? Additional charges will apply. If not, only 1 cleaner will be appointed."
+        android:textSize="16sp"
+        android:layout_below="@+id/idSpinCleanSupplies"
+        android:layout_marginTop="15dp"/>
+
+    <Spinner
+        android:id="@+id/idSpinNumberCleaners"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idTvCleaners"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp" />
+
+    <TextView
+        android:id="@+id/idTvCleaningDuration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Would you like additional hours? 1 hour is by default."
+        android:textSize="16sp"
+        android:layout_below="@+id/idSpinNumberCleaners"
+        android:layout_marginTop="15dp"/>
+
+    <Spinner
+        android:id="@+id/idSpinDuration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/idTvCleaningDuration"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp" />
+
+    <Button
+        android:id="@+id/idBtnNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/idSpinDuration"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="15dp"
+        android:text="Next" />
+
+</RelativeLayout>

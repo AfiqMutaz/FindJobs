@@ -18,8 +18,6 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.ArrayList;
-
 public class HomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     private BottomNavigationView bottomNavigationView;
@@ -90,7 +88,7 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
     public void openJobOrder(View view) {
         int id = view.getId();
         Log.d(TAG, String.valueOf(id));
-        Intent intent = new Intent(this, OrderActivity.class);
+        Intent intent = new Intent(this, DateActivity.class);
         intent.putExtra("viewId", id);
         startActivity(intent);
     }

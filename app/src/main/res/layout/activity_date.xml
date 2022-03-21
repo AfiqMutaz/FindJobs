@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20dp">
+
+    <TextView
+        android:id="@+id/idTvBookingTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Booking"
+        android:textStyle="bold"
+        android:textSize="24sp"/>
+
+    <TextView
+        android:id="@+id/idTvDateTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Appointment Date"
+        android:textSize="20sp"
+        android:layout_below="@+id/idTvBookingTitle"
+        android:layout_marginTop="15dp"/>
+
+    <Button
+        android:id="@+id/idBtnDatePicker"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:text="JAN 01 2020 00:00"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        style="?android:spinnerStyle"
+        android:onClick="openDatePicker"
+        android:layout_below="@+id/idTvDateTime"/>
+
+    <TextView
+        android:id="@+id/idTvDateTimeAlternate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Alternate Date"
+        android:textSize="20sp"
+        android:layout_below="@+id/idBtnDatePicker"
+        android:layout_marginTop="15dp"/>
+
+    <Button
+        android:id="@+id/idBtnDatePickerAlternate"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:text="JAN 01 2020 00:00"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        style="?android:spinnerStyle"
+        android:onClick="openDatePicker"
+        android:layout_below="@+id/idTvDateTimeAlternate"/>
+
+    <Button
+        android:id="@+id/idBtnNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        android:layout_below="@id/idBtnDatePickerAlternate"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="15dp"/>
+
+</RelativeLayout>

@@ -15,7 +15,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FindJobs">
         <activity
+            android:name=".CompleteOrderActivity"
+            android:exported="false" />
+        <activity
             android:name=".OrderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DateActivity"
             android:exported="false" />
         <activity
             android:name=".UserTypeActivity"

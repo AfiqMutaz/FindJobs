@@ -76,56 +76,13 @@
 
     </LinearLayout>
 
-
-    <LinearLayout
-        android:id="@+id/idLinLaySupplies"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/idLinLayDateTimeAlt">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cleaning Supplies: "
-            android:textStyle="bold"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/idLinLayNumCleaner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/idLinLaySupplies">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Additional Cleaners: "
-            android:textStyle="bold"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/idLinLayDuration"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/idLinLayNumCleaner">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Duration: "
-            android:textStyle="bold"/>
-
-    </LinearLayout>
-
     <TableLayout
         android:id="@+id/idTabLayPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:layout_margin="40dp"
-        android:layout_below="@id/idLinLayDuration">
+        android:layout_below="@id/idLinLayDateTimeAlt">
 
         <TableRow
             android:background="@color/quantum_googgreen900">

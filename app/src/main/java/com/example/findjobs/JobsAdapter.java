@@ -1,6 +1,7 @@
 package com.example.findjobs;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,9 @@ import androidx.annotation.Nullable;
 import java.util.List;
 
 public class JobsAdapter extends ArrayAdapter<Jobs> {
+
+    public static final String TAG = JobsAdapter.class.getSimpleName();
+
     public JobsAdapter(@NonNull Context context, @NonNull List<Jobs> jobsArrayList) {
         super(context, 0, jobsArrayList);
     }
@@ -38,12 +42,16 @@ public class JobsAdapter extends ArrayAdapter<Jobs> {
         //ImageView ivJobsImage = listitemView.findViewById(R.id.idIvImage);
 
         tvJobsTitle.setText(jobs.getServiceType());
-        tvJobsDateTime.setText(jobs.getDateTime());
-        tvJobsDateTimeAlt.setText(jobs.getDateTimeAlt());
-        tvJobsDuration.setText(jobs.getDuration());
-        tvJobsNumCleaner.setText(jobs.getNumCleaner());
-        tvJobsIsSupplied.setText(String.valueOf(jobs.getIsSupplied()));
+        tvJobsDateTime.setText(formatDate(jobs.getDateTime()));
+        tvJobsDateTimeAlt.setText(formatDate(jobs.getDateTimeAlt()));
+        tvJobsDuration.setText(String.valueOf(jobs.getDuration().charAt(0)));
+        tvJobsNumCleaner.setText(String.valueOf(jobs.getNumCleaner().charAt(0)));
         tvJobsTotalPrice.setText(jobs.getTotalPrice());
+
+        if (jobs.getIsSupplied())
+            tvJobsIsSupplied.setText("Yes");
+        else
+            tvJobsIsSupplied.setText("No");
 
         listitemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,5 +60,13 @@ public class JobsAdapter extends ArrayAdapter<Jobs> {
             }
         });
         return listitemView;
+    }
+
+    public String formatDate(String date) {
+        String newDate = String.valueOf(date.charAt(0)) + String.valueOf(date.charAt(1)) + " " + date.charAt(2) + date.charAt(3) + date.charAt(4) + " " + date.charAt(5)
+                + date.charAt(6) + date.charAt(7) + date.charAt(8) + " " + date.charAt(9)
+                + date.charAt(10) + ":" + date.charAt(11) + date.charAt(12);
+
+        return newDate;
     }
 }

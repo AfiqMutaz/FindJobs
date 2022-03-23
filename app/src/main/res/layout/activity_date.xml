@@ -43,14 +43,14 @@
 
     <Button
         android:id="@+id/idBtnDatePickerAlternate"
+        style="?android:spinnerStyle"
         android:layout_width="260dp"
         android:layout_height="wrap_content"
-        android:text="JAN 01 2020 00:00"
-        android:textSize="18sp"
-        android:textColor="@color/black"
-        style="?android:spinnerStyle"
+        android:layout_below="@+id/idTvDateTimeAlternate"
         android:onClick="openDatePicker"
-        android:layout_below="@+id/idTvDateTimeAlternate"/>
+        android:text="JAN 01 2020 00:00"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/idBtnNext"

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    android:padding="2dp"
+    app:cardElevation="3dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+<!--        <ImageView-->
+<!--            android:id="@+id/idIvImage"-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:layout_margin="8dp"-->
+<!--            android:background="@color/white"-->
+<!--            android:backgroundTint="@color/white"-->
+<!--            android:padding="3dp"/>-->
+
+        <TextView
+            android:id="@+id/idTvJobServiceType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:padding="3dp"
+            android:text="ServiceType"
+            android:textAlignment="center"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/idTvJobDateTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:padding="3dp"
+            android:text="DateTime"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:layout_below="@+id/idTvJobServiceType"/>
+
+        <TextView
+            android:id="@+id/idTvJobDateTimeAlt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:padding="3dp"
+            android:text="DateTimeAlt"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:layout_below="@+id/idTvJobDateTime"/>
+
+        <TextView
+            android:id="@+id/idTvJobDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:padding="3dp"
+            android:text="Duration"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:layout_below="@+id/idTvJobDateTimeAlt"/>
+
+        <TextView
+            android:id="@+id/idTvJobNumCleaner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:padding="3dp"
+            android:text="numCleaner"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:layout_below="@+id/idTvJobDuration"/>
+
+        <TextView
+            android:id="@+id/idTvJobIsSupplied"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:padding="3dp"
+            android:text="isSupplied"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:layout_below="@+id/idTvJobNumCleaner"/>
+
+        <TextView
+            android:id="@+id/idTvJobTotalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:padding="3dp"
+            android:text="totalPrice"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:layout_below="@+id/idTvJobIsSupplied"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

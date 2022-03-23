@@ -23,6 +23,7 @@ public class DateActivity extends AppCompatActivity {
 
     private int hour;
     private int min;
+    private int timePickerInput;
     private String serviceType;
 
     private String mDate;
@@ -101,6 +102,7 @@ public class DateActivity extends AppCompatActivity {
                 month = month + 1;
                 String date = makeDateString(dayOfMonth, month, year);
                 mDate = date;
+
                 openTimePicker();
             }
         };
@@ -161,6 +163,7 @@ public class DateActivity extends AppCompatActivity {
     }
 
     public void openDatePicker(View view) {
+        timePickerInput = view.getId();
         datePickerDialog.show();
     }
 
@@ -176,7 +179,17 @@ public class DateActivity extends AppCompatActivity {
                 hour = hourOfDay;
                 min = minute;
 
-                btnDate.setText(mDate + " " + hour + ":" + min);
+                switch (timePickerInput) {
+                    case R.id.idBtnDatePicker:
+                        btnDate.setText(mDate + " " + hour + ":" + min);
+                        break;
+                    case R.id.idBtnDatePickerAlternate:
+                        btnDateAlternate.setText(mDate + " " + hour + ":" + min);
+                        break;
+                    default:
+                        Log.d(TAG, "Error");
+                        break;
+                }
             }
         }, hour, min, false);
         timePickerDialog.show();

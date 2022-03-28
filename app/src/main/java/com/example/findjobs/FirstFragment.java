@@ -5,11 +5,13 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -20,14 +22,18 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class FirstFragment extends Fragment {
 
@@ -38,8 +44,9 @@ public class FirstFragment extends Fragment {
 
     private boolean userType;
 
-    private ListView lvJobs;
     private ArrayList<Jobs> jobsArrayList;
+
+    private Jobs jobs;
 
     public FirstFragment() {
         // Required empty public constructor
@@ -59,30 +66,65 @@ public class FirstFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        lvJobs = getView().findViewById(R.id.idLVJobs);
-        jobsArrayList = new ArrayList<>();
+//        jobsArrayList = new ArrayList<>();
+//        JobsAdapter adapter = new JobsAdapter(getContext(), jobsArrayList);
 
-        loadDataInListView();
+//        loadDataInListView();
 
         db.collection("jobs")
-                .whereEqualTo("isAccepted", false)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if(task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
+                    public void onEvent(@Nullable QuerySnapshot snapshots, @Nullable FirebaseFirestoreException e) {
+                        if (e != null) {
+                            Log.w(TAG, "listen:error", e);
+                            return;
+                        }
+
+                        for (DocumentChange dc : snapshots.getDocumentChanges()) {
+                            switch (dc.getType()) {
+                                case ADDED:
+//                                    Map<String, Object> list = dc.getDocument().getData();
+//                                    Jobs jobs = new Jobs(dc.getDocument().getId(),
+//                                            String.valueOf(list.get("userId")),
+//                                            String.valueOf(list.get("serviceType")),
+//                                            String.valueOf(list.get("dateTime")),
+//                                            String.valueOf(list.get("dateTimeAlt")),
+//                                            String.valueOf(list.get("duration")),
+//                                            String.valueOf(list.get("numCleaner")),
+//                                            String.valueOf(list.get("totalPrice")),
+//                                            Boolean.parseBoolean(String.valueOf(list.get("isAccepted"))),
+//                                            Boolean.parseBoolean(String.valueOf(list.get("isSupplied"))));
+//                                    jobsArrayList.add(jobs);
+//                                    Log.d(TAG, String.valueOf(list.get("serviceType")));
+                                    jobs = dc.getDocument().toObject(Jobs.class);
+                                    jobsArrayList.add(jobs);
+                                    Log.d(TAG, "New Job: [ID=" + dc.getDocument().getId() + "] " + dc.getDocument().getData());
+                                    break;
+                                case MODIFIED:
+                                    Log.d(TAG, "Modified Job: " + dc.getDocument().getData());
+                                    break;
+                                case REMOVED:
+                                    jobs = dc.getDocument().toObject(Jobs.class);
+                                    jobsArrayList.add(jobs);
+                                    Log.d(TAG, "Removed Job: " + dc.getDocument().getData());
+                                    break;
                             }
-                        } else {
-                            Log.d(TAG, "Error getting documents: ", task.getException());
+
+                            ListView lvJobs = getView().findViewById(R.id.idLVJobs);
+                            ArrayAdapter adapter = new JobsAdapter(getContext(), jobsArrayList);
+                            lvJobs.setAdapter(adapter);
+                            adapter.notifyDataSetChanged();
                         }
                     }
                 });
+
+        //loadDataInListView();
     }
 
     public void loadDataInListView() {
-        db.collection("jobs").get()
+        db.collection("jobs")
+                .whereEqualTo("isAccepted", false)
+                .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -93,7 +135,7 @@ public class FirstFragment extends Fragment {
                                 jobsArrayList.add(jobs);
                             }
                             JobsAdapter adapter = new JobsAdapter(getContext(), jobsArrayList);
-                            lvJobs.setAdapter(adapter);
+                            //lvJobs.setAdapter(adapter);
                         } else {
                             Toast.makeText(getContext(), "No data found in Database", Toast.LENGTH_SHORT).show();
                         }
@@ -126,5 +168,16 @@ public class FirstFragment extends Fragment {
             }
         });
         return userType;
+    }
+
+    public void restartFragment() {
+        Fragment currentFragment = getActivity().getSupportFragmentManager().findFragmentById(R.id.flFragment);
+
+        if(currentFragment instanceof FirstFragment) {
+            FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.detach(currentFragment);
+            fragmentTransaction.attach(currentFragment);
+            fragmentTransaction.commit();
+        }
     }
 }

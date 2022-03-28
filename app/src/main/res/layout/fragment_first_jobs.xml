@@ -10,12 +10,14 @@
         android:layout_height="wrap_content"
         android:text="Jobs Available"
         android:textSize="24sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"/>
 
     <ListView
         android:id="@+id/idLVJobs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/idTvJobsAvailable"/>
+        android:layout_below="@+id/idTvJobsAvailable"
+        android:layout_marginBottom="60dp"/>
 
 </RelativeLayout>

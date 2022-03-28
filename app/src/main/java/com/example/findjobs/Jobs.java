@@ -2,6 +2,7 @@ package com.example.findjobs;
 
 public class Jobs {
 
+    private String docId;
     private String userId;
     private String serviceType;
     private String dateTime;
@@ -16,7 +17,8 @@ public class Jobs {
 
     }
 
-    public Jobs(String userId,
+    public Jobs(String docId,
+                String userId,
                 String serviceType,
                 String dateTime,
                 String dateTimeAlt,
@@ -37,6 +39,10 @@ public class Jobs {
     }
 
     //getter methods
+    public String getDocId() {
+        return docId;
+    }
+
     public String getUserId() {
         return userId;
     }
@@ -74,6 +80,10 @@ public class Jobs {
     }
 
     //setter methods
+    public void setDocId(String docId) {
+        this.docId = docId;
+    }
+
     public void setUserId(String userId) {
         this.userId = userId;
     }

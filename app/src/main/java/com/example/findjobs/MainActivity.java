@@ -29,6 +29,8 @@ import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
 
+    String emulatorIp = "10.0.2.2";
+
     //variable for FirebaseAuth class
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
@@ -48,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        mAuth.useEmulator("10.0.2.2", 9099);
         mAuth.addAuthStateListener(authStateListener);
     }
 
